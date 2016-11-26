@@ -14,7 +14,7 @@ as environment variables in Bash commands.
 $ aws-assume <profile>
 ```
 
-## Instalation
+## Installation
 ```
 # As part of your Node project
 npm install aws-assume --save
@@ -29,8 +29,8 @@ npm install aws-assume --save
 
 ```
 # Installed globally
-npm install -g aws-auth-helper
-eval "`aws-auth-helper [aws-profile-name]` npm run deploy"
+npm install -g aws-assume
+eval "`aws-assume <profile>` npm run deploy"
 ```
 
 The AWS profile is selected by the first criteria of these that matches:
