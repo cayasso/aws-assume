@@ -1,0 +1,39 @@
+{
+  "name": "aws-assume",
+  "description": "Generate teporary credentials for aws assumed roles.",
+  "version": "0.1.0",
+  "author": "Jonathan Brumley <cayasso@gmail.com>",
+  "keywords": [
+    "aws",
+    "switch role",
+    "switch",
+    "credentials",
+    "sts",
+    "ami"
+  ],
+  "bin": {
+    "aws-assume": "./bin/aws-assume"
+  },
+  "main": "./lib/aws-assume",
+  "scripts": {
+    "build": "make build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cayasso/aws-assume.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.7.7",
+    "commander": "^2.9.0",
+    "ini": "^1.3.4",
+    "rc": "^1.1.6",
+    "shelljs": "^0.7.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.11.5",
+    "babel-plugin-transform-async-to-generator": "6.8.0"
+  }
+}
