@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-const assume = require('../src/aws-assume.js')
+const assume = require('../lib/aws-assume.js')
 const credentials = assume(assume.getProfile())
