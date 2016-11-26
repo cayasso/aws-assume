@@ -28,7 +28,7 @@ npm install aws-assume --save
 ```
 
 ```
-# Installed globally
+# Install globally
 npm install -g aws-assume
 eval "`aws-assume <profile>` npm run deploy"
 ```
@@ -57,12 +57,10 @@ aws_access_key_id = ABCDEFG
 aws_secret_access_key = abcdefg
 ```
 
-You should also have a role based configuration that uses MFA in your
-`~/.aws/config` file:
+You should also have a role based configuration in your `~/.aws/config` file:
 
 ```ini
 [profile default]
-mfa_serial = arn:aws:iam::1234567890:mfa/username
 output = json
 region = us-east-1
 role_arn = arn:aws:iam::1234567890:role/DesiredRoleName
