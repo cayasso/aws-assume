@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 'use strict'
-
+import 'babel-polyfill'
 import { SharedIniFileCredentials, STS } from 'aws-sdk'
 import { join, dirname } from 'path'
 import { readFileSync } from 'fs'
