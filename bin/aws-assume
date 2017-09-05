@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
 const assume = require('../lib/aws-assume.js')
-const credentials = assume.default(assume.getProfile())
+const profile = process.argv.length > 2 ? process.argv[2] : assume.getProfile()
+const credentials = assume.default(profile)

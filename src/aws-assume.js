@@ -7,7 +7,7 @@ import { join, dirname } from 'path'
 import { readFileSync } from 'fs'
 import { parse } from 'ini'
 
-function assume(profile) {
+export function assumeRole(profile) {
   const creds = new SharedIniFileCredentials({ profile })
   const file = process.env.AWS_CONFIG_FILE || join(dirname(creds.filename), 'config')
   const config = parse(readFileSync(file, 'utf-8'))[`profile ${profile}`]
@@ -27,12 +27,7 @@ function assume(profile) {
 }
 
 export function getProfile() {
-  if (process.argv.length > 2) {
-    return process.argv[2]
-  } else if (process.env.AWS_PROFILE) {
-    return process.env.AWS_PROFILE
-  }
-  return 'default'
+  return process.env.AWS_PROFILE || 'default'
 }
 
 export default async (profile) => {
@@ -40,7 +35,7 @@ export default async (profile) => {
   process.stdin.setEncoding('utf8')
 
   try {
-    const { AccessKeyId, SecretAccessKey, SessionToken } = await assume(profile)
+    const { AccessKeyId, SecretAccessKey, SessionToken } = await assumeRole(profile)
     process.stdout.write(`AWS_ACCESS_KEY_ID=${AccessKeyId} AWS_SECRET_ACCESS_KEY=${SecretAccessKey} AWS_SESSION_TOKEN=${SessionToken}`)
   } catch(e) {
     process.stderr.write(e.message + "\n")
