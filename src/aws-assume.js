@@ -6,10 +6,14 @@ import { SharedIniFileCredentials, STS } from 'aws-sdk'
 import { join, dirname } from 'path'
 import { readFileSync } from 'fs'
 import { parse } from 'ini'
+import { homedir } from 'os'
 
 export function assumeRole(profile) {
   const creds = new SharedIniFileCredentials({ profile })
-  const file = process.env.AWS_CONFIG_FILE || join(dirname(creds.filename), 'config')
+
+  const awsProfileDir = creds.filename ? dirname(creds.filename) : join(homedir(), '.aws')
+  const file = process.env.AWS_CONFIG_FILE || join(awsProfileDir, 'config')
+
   const config = parse(readFileSync(file, 'utf-8'))[`profile ${profile}`]
   const sts = new STS()
 
