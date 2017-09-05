@@ -2,7 +2,7 @@
 
 'use strict'
 import 'babel-polyfill'
-import { SharedIniFileCredentials, STS } from 'aws-sdk'
+import { Credentials, SharedIniFileCredentials, STS } from 'aws-sdk'
 import { join, dirname } from 'path'
 import { readFileSync } from 'fs'
 import { parse } from 'ini'
@@ -25,7 +25,7 @@ export function assumeRole(profile) {
   return new Promise((resolve, reject) => {
     sts.assumeRole(options, (error, response) => {
       if (error) reject(error)
-      else resolve(response.Credentials)
+      else resolve(new Credentials(response.Credentials.AccessKeyId, response.Credentials.SecretAccessKey, response.Credentials.SessionToken))
     })
   })
 }
@@ -39,8 +39,8 @@ export default async (profile) => {
   process.stdin.setEncoding('utf8')
 
   try {
-    const { AccessKeyId, SecretAccessKey, SessionToken } = await assumeRole(profile)
-    process.stdout.write(`AWS_ACCESS_KEY_ID=${AccessKeyId} AWS_SECRET_ACCESS_KEY=${SecretAccessKey} AWS_SESSION_TOKEN=${SessionToken}`)
+    const { accessKeyId, secretAccessKey, sessionToken } = await assumeRole(profile)
+    process.stdout.write(`AWS_ACCESS_KEY_ID=${accessKeyId} AWS_SECRET_ACCESS_KEY=${secretAccessKey} AWS_SESSION_TOKEN=${sessionToken}`)
   } catch(e) {
     process.stderr.write(e.message + "\n")
     process.exitCode = 1
