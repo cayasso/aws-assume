@@ -15,10 +15,12 @@ $ aws-assume <profile>
 ```
 
 ## Installation
-```
-# As part of your Node project
-npm install aws-assume --save
 
+### As part of your Node project
+`npm install aws-assume --save`
+
+#### Usage as a standalone CLI script
+```javascript
 # package.json
 ...
     "scripts": {
@@ -27,8 +29,22 @@ npm install aws-assume --save
 ...
 ```
 
+#### Usage as a module
+```javascript
+import {assumeRole, getProfile} from 'aws-assume'
+import AWS from 'aws-sdk'
+
+...
+
+assumeRole(getProfile())
+.then(credentials => {
+	AWS.config.credentials = credentials
+	// ...
+})
 ```
-# Install globally
+
+### Install globally
+```bash
 npm install -g aws-assume
 eval "`aws-assume <profile>` npm run deploy"
 ```
