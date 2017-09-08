@@ -1,7 +1,7 @@
 {
   "name": "aws-assume",
   "description": "Generate teporary credentials for aws assumed roles.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "Jonathan Brumley <cayasso@gmail.com>",
   "keywords": [
     "aws",
@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
-    "babel-plugin-transform-async-to-generator": "6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
+    "babel-plugin-transform-async-to-generator": "6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.11.5",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-es2015-destructuring": "^6.19.0",
     "babel-preset-es2015": "^6.3.13",
