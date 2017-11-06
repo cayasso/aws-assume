@@ -31,15 +31,22 @@ $ aws-assume <profile>
 
 #### Usage as a module
 ```javascript
-import {assumeRole, getProfile} from 'aws-assume'
+import {assumeRole, getProfile, awsConfig} from 'aws-assume'
 import AWS from 'aws-sdk'
 
 ...
+// aws-assume exposes the AWS SDK global configuration object
+// so you can customize details such as proxies, loggers and retry options
+awsConfig.update({
+    httpOptions: { 
+        agent: myProxy
+    }
+});
 
 assumeRole(getProfile())
 .then(credentials => {
-	AWS.config.credentials = credentials
-	// ...
+    AWS.config.credentials = credentials
+    // ...
 })
 ```
 
