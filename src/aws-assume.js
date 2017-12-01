@@ -7,6 +7,7 @@ import { join, dirname } from 'path'
 import { readFileSync } from 'fs'
 import { parse } from 'ini'
 import { homedir } from 'os'
+export { config as awsConfig } from 'aws-sdk';
 
 export function assumeRole(profile) {
   const creds = new SharedIniFileCredentials({ profile })
