@@ -1,7 +1,7 @@
 {
   "name": "aws-assume",
   "description": "Generate teporary credentials for aws assumed roles.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "Jonathan Brumley <cayasso@gmail.com>",
   "keywords": [
     "aws",
